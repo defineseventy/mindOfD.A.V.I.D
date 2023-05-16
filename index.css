@@ -30,3 +30,9 @@ div.gameint {
 a {
     text-decoration: none;
 }
+
+button {
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+}
