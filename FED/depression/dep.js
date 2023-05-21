@@ -15,5 +15,5 @@ function clickFunc(id, ans) {
     //         alert('You have chosen ' + ' ' + answer1);
     //         window.location.href = "/";
     //     })
-    window.location.href = `/depression/${id}.html`;
+    window.location.href = `/FED/depression/${id}.html`;
 };
