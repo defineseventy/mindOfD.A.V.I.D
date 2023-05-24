@@ -1,0 +1,17 @@
+{
+  "name": "fed",
+  "version": "1.0.0",
+  "description": "Good day! Welcome to In the Mind of D.A.V.I.D. Our Daily Anecdote Vivid Incident Decision-making. we are going to tell you a story through DAVID. Through his thoughts and process, you will need to make the decisions for DAVID...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
