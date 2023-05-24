@@ -8,32 +8,50 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
-async function run() {
+
+const Express = require("express");
+const BodyParser = require("body-parser");
+
+const app = Express();
+
+app.use(BodyParser.json());
+
+var database, getDepression, createDepression;
+
+app.get("/depression", async (request, response) => {
     try {
-        // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
-        // Send a ping to confirm a successful connection
-        await client.db("mindofdavid").command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
+        const deal = await getDepression.findOne({ "date": "2022-10-07" });
+        response.send(deal || {});
+    } catch (error) {
+        response.status(500).send({ "message": error.message });
     }
+});
+
+app.post("/depression", async (request, response) => {
+    try {
+        if(!request.body) {
+            throw { "message": "The request body is missing!" };
+        }
+        const receipt = await createDepression.insertOne(
+            { 
+                "scene": request.body.scene,
+                "opt": request.body.opt
+            }
+        );
+        response.status(200).send(receipt, "OK");
+    } catch (error) {
+        response.status(500).send({ "message": error.message });
+    }
+});
+
+app.listen(3000, async () => {
     try {
         await client.connect();
-        const database = client.db("mindofdavid");
-        const collection = database.collection("depression");
-        const inserted = await collection.insertOne({
-            "scene": "1",
-            "opt": "B"
-        });
-        const found = await collection.find({ "scene": "1" }).toArray();
-        const deleted = await collection.deleteMany({ "scene": "1" }, { "opt": "B"});
-        console.log(found);
+        database = client.db("mindofdavid");
+        getDepression = database.collection("depression");
+        createDepression = database.collection("depression");
+        console.log("SERVING AT :3000...");
     } catch (error) {
         console.error(error);
-    } finally {
-        client.close();
     }
-}
-run().catch(console.dir);
+});
