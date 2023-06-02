@@ -9,11 +9,12 @@ function clickFunc(id, ans) {
     console.log(answers);
     const text = id.slice(0, 1) + '. ' + ans;
     alert("you have chosen " + text)
-    // axios.post(`${baseurl}/depression/`, answer1)
-    //     .then((response) => {
-    //         console.log(answer1);
-    //         alert('You have chosen ' + ' ' + answer1);
-    //         window.location.href = "/";
-    //     })
-    window.location.href = `/FED/depression/${id}.html`;
+    let baseurl = `https://localhost:3000`;
+    axios.post(`${baseurl}/depression/`, answers)
+        .then((response) => {
+            console.log(answers);
+            alert('You have chosen ' + ' ' + answers);
+            window.location.href = "/";
+        })
+    // window.location.href = `/depression/${id}`;
 };
