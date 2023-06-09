@@ -1,0 +1,38 @@
+body {
+    font-family: 'Rubik';
+    background-color: rgb(44, 46, 104);
+}
+
+div.gameint {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.instructions {
+    transform: translate(15%, 10%);
+}
+
+.selection {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.about {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+}
